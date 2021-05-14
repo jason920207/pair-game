@@ -5,7 +5,7 @@ import CardBackground from '../assets/img/gray_back.png'
 import "./Game.css"
 import MyModal from './Modal'
 
-const Game = () => {
+const Game = ({ numberOfPairs }) => {
 
     const [newImages, setNewImages] = useState([])
     const [pair, setPair] = useState(false)
@@ -19,12 +19,12 @@ const Game = () => {
 
     useEffect(() => {
         shuffleCard()
-    }, [])
+    }, [numberOfPairs])
 
     const shuffleCard = () => {
         const imageArr = [];
         let remainImage = [...images]
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < numberOfPairs; i++) {
             const rand = remainImage[Math.floor(Math.random() * (remainImage.length - 1))];
             remainImage = remainImage.filter((image) => image.name !== rand.name)
             imageArr.push({ ...rand })
@@ -105,12 +105,19 @@ const Game = () => {
         setCheckedList([])
     }
 
+    const onModalClose = () => {
+        setOpen(false)
+        setCheckedList([])
+    }
+
+
     return (
         <>
             <MyModal
                 open={open}
                 setOpen={setOpen}
                 reset={onModalReset}
+                onModalClose={onModalClose}
             />
             <Button className="reset-btn" onClick={onReset}>RESET</Button>
             <Grid columns={4}>
