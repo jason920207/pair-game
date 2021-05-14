@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
-function MyModal({ open, setOpen, reset }) {
+function MyModal({ open, setOpen, reset, onModalClose }) {
 	console.log(open)
 	return (
 		<Modal
@@ -16,7 +16,7 @@ function MyModal({ open, setOpen, reset }) {
 				</Modal.Description>
 			</Modal.Content>
 			<Modal.Actions>
-				<Button color='black' onClick={() => setOpen(false)}>
+				<Button color='black' onClick={() => onModalClose()}>
 					Nope
         </Button>
 				<Button
