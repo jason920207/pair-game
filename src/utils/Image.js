@@ -34,7 +34,18 @@ import C10 from "../assets/img/10C.png";
 import D10 from "../assets/img/10D.png";
 import H10 from "../assets/img/10H.png";
 import S10 from "../assets/img/10S.png";
-
+import JC from "../assets/img/JC.png";
+import JD from "../assets/img/JD.png";
+import JH from "../assets/img/JH.png";
+import JS from "../assets/img/JS.png";
+import QC from "../assets/img/QC.png";
+import QD from "../assets/img/QD.png";
+import QH from "../assets/img/QH.png";
+import QS from "../assets/img/QS.png";
+import KC from "../assets/img/KC.png";
+import KD from "../assets/img/KD.png";
+import KH from "../assets/img/KH.png";
+import KS from "../assets/img/KS.png";
 
 export const images = [
     {
@@ -182,8 +193,8 @@ export const images = [
         checked: false
     },
     {
-        name: "C5",
-        pic: C5,
+        name: "C8",
+        pic: C8,
         flipped: false,
         checked: false
     },
@@ -250,6 +261,78 @@ export const images = [
     {
         name: "S10",
         pic: S10,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "JC",
+        pic: JC,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "JD",
+        pic: JD,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "JH",
+        pic: JH,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "JS",
+        pic: JS,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "QC",
+        pic: QC,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "QD",
+        pic: QD,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "QH",
+        pic: QH,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "QS",
+        pic: QS,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "KC",
+        pic: KC,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "KD",
+        pic: KD,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "KH",
+        pic: KH,
+        flipped: false,
+        checked: false
+    },
+    {
+        name: "KS",
+        pic: KS,
         flipped: false,
         checked: false
     },

@@ -3,12 +3,19 @@ import { images } from "../utils/Image";
 import { Grid, Image, Checkbox, Button } from 'semantic-ui-react'
 import CardBackground from '../assets/img/gray_back.png'
 import "./Game.css"
+import MyModal from './Modal'
+
 const Game = () => {
 
     const [newImages, setNewImages] = useState([])
     const [pair, setPair] = useState(false)
+    const [checkedList, setCheckedList] = useState([])
     const curRef = useRef(null);
     const preRef = useRef(null)
+    const checkedListRef = useRef()
+    checkedListRef.current = checkedList
+
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
         shuffleCard()
@@ -28,8 +35,7 @@ const Game = () => {
     }
 
     useEffect(() => {
-        console.log('hello')
-        check(curRef.current, preRef.current)
+        onCheck(curRef.current, preRef.current)
         setPair(false)
     }, [pair])
 
@@ -56,7 +62,7 @@ const Game = () => {
     }
 
 
-    const check = (cur, pre) => {
+    const onCheck = (cur, pre) => {
         if (cur === null || pre === null) {
             return
         }
@@ -65,14 +71,19 @@ const Game = () => {
             return
         }
 
-        console.log(cur)
-        console.log(pre)
         const images = [...newImages]
         if (images[cur].name === images[pre].name) {
             images[cur].checked = true
             images[pre].checked = true
             curRef.current = null
             preRef.current = null
+            console.log(checkedListRef)
+            checkedListRef.current.push(images[cur])
+            checkedListRef.current.push(images[pre])
+
+            if (checkedListRef.current.length === images.length) {
+                setOpen(true)
+            }
         } else {
             images[cur].flipped = false
             images[pre].flipped = false
@@ -83,13 +94,25 @@ const Game = () => {
 
     }
 
-    const reset = () => {
+    const onReset = () => {
         shuffleCard()
+        setCheckedList([])
+    }
+
+    const onModalReset = () => {
+        setOpen(false)
+        shuffleCard()
+        setCheckedList([])
     }
 
     return (
         <>
-            <Button className="reset-btn" onClick={reset}>RESET</Button>
+            <MyModal
+                open={open}
+                setOpen={setOpen}
+                reset={onModalReset}
+            />
+            <Button className="reset-btn" onClick={onReset}>RESET</Button>
             <Grid columns={4}>
                 {newImages
                     .map((element, index) => {
@@ -103,8 +126,6 @@ const Game = () => {
                                         <Image src={CardBackground} />
                                 }
                             </Grid.Column>
-
-
                         );
                     })}
             </Grid>
