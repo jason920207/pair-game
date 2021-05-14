@@ -19,30 +19,34 @@ function App() {
   const setPair = () => {
     setPairs(numberOfPairs)
   }
+
+  const onKeyPress = (evt) => {
+    console.log(evt.keyCode)
+    if (evt.keyCode == 0) {
+      setPairs(numberOfPairs)
+    }
+  }
   return (
     <div className="App">
       <Menu
         borderless
         fixed={'top'}
       >
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={6}>
-              <Menu.Item>Card Flip Game</Menu.Item>
-            </Grid.Column>
-            <Grid.Column width={6}>
-            </Grid.Column>
-            <Grid.Column width={6}>
-              <Input
-                icon={<Icon name='search' inverted circular link onClick={setPair} />}
-                placeholder='Type Number of Pairs to Start'
-                onChange={(evt) => { setNumberOfPairs(evt.target.value) }}
-                value={numberOfPairs}
-                type="number"
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <div className="nav">
+          <Menu.Item className="nav-left">Card Flip Game</Menu.Item>
+
+          <Input
+            className="nav-right"
+            icon={<Icon name='search' inverted circular link onClick={setPair} />}
+            placeholder='Type Number of Pairs to Start'
+            onChange={(evt) => { setNumberOfPairs(evt.target.value) }}
+            value={numberOfPairs}
+            type="number"
+            onKeyPress={onKeyPress}
+          />
+
+        </div>
+
 
       </Menu>
 
